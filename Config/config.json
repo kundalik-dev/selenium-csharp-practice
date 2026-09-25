@@ -1,0 +1,9 @@
+{
+  "BaseUrl": "https://www.saucedemo.com/",
+  "Browser": "edge",
+  "Options": ["--start-maximized", "--incognito"],
+  "Headless": false,
+  "ImplicitWaitSeconds": 5,
+  "ExplicitWaitSeconds": 10
+}
+ 

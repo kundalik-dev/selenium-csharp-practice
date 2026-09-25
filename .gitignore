@@ -1,0 +1,28 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / VS Code / Rider
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test results and coverage reports
+TestResults/
+coverage/
+coverage*.xml
+*.coverage
+*.coveragexml
+
+# Selenium-generated artifacts
+Screenshots/
+Downloads/
+
+# Local secrets and machine-specific settings
+.env
+.env.*
+appsettings.Local.json

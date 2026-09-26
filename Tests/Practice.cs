@@ -11,7 +11,7 @@ namespace Selenium_CSharp_Practice.Tests
         {
             ChromeOptions options = new ChromeOptions();
 
-            options.AddArgument("--headless");
+            //options.AddArgument("--headless");
 
             driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();

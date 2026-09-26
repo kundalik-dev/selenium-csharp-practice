@@ -24,7 +24,7 @@ namespace Selenium_CSharp_Practice.Tests
         [Test]
         public void BookPrice_StaticTable(string bookName, string expectedBookPrice)
 
-        { 
+        {
             IWebElement row = driver.FindElement(By.XPath($"//tr[td[text()='{bookName}']]"));
 
             // From that row, get the 4th column (price)
@@ -32,6 +32,32 @@ namespace Selenium_CSharp_Practice.Tests
 
             Assert.That(actBookPrice, Is.EqualTo(expectedBookPrice));
 
+        }
+
+        [Test]
+        public void Should_Display_Chrome_CPU_Ussage()
+        {
+            //string browserName = "Chrome";
+            //string headerName = "CPU (%)";
+            string browserName = "Firefox";
+            string headerName = "Memory (MB)";
+
+            var headers = driver.FindElements(By.XPath("//table[@id='taskTable']//th"));
+            var rows = driver.FindElements(By.XPath("//table[@id='taskTable']//tbody//tr"));
+            int headerIndex = headers
+                            .Select((h, i) => new { h.Text, Index = i })
+                            .First(x => x.Text == headerName).Index;
+
+            foreach (var row in rows)
+            {
+                var cells = row.FindElements(By.TagName("td"));
+                if (cells[0].Text == browserName)
+                {
+                    string cellValue = cells[headerIndex].Text;
+                    Console.WriteLine($"{browserName} {headerName} Usage: {cellValue}");
+                    break;
+                }
+            }
         }
 
         [TearDown]

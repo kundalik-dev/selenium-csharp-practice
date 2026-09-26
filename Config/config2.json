@@ -1,9 +1,9 @@
 {
-  "BaseUrl": "http://localhost:5173/login",
-  "BaseAPIUrl": "http://localhost:3000/api",
+  "BaseUrl": "https://www.saucedemo.com/",
   "Browser": "chrome",
   "Options": ["--start-maximized", "--incognito"],
-  "Headless": false,
+  "Headless": true,
   "ImplicitWaitSeconds": 5,
   "ExplicitWaitSeconds": 10
 }
+ 

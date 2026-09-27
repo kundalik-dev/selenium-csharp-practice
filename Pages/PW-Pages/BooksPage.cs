@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using Selenium_CSharp_Practice.Utils;
 using Selenium_CSharp_Practice.Base;
 
 namespace Selenium_CSharp_Practice.Pages.PW_Pages
@@ -8,7 +8,7 @@ namespace Selenium_CSharp_Practice.Pages.PW_Pages
     {
         private static readonly By PageHeading = By.XPath("//h1");
 
-        public BooksPage(IWebDriver driver, WebDriverWait wait) : base(driver, wait) { }
+        public BooksPage(IWebDriver driver, WaitHelper waits) : base(driver, waits) { }
 
         public string GetPageTitle()
         {

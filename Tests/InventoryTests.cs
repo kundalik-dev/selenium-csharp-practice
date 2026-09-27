@@ -16,7 +16,7 @@ namespace Selenium_CSharp_Practice.Tests
         [SetUp]
         public void LoginAsStandardUser()
         {
-            _loginPage = new LoginPage(driver, wait);
+            _loginPage = new LoginPage(driver, waits);
             _inventoryPage = _loginPage.LoginAndNavigate("standard_user", "secret_sauce");
         }
 

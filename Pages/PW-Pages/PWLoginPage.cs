@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using Selenium_CSharp_Practice.Utils;
 using Selenium_CSharp_Practice.Base;
 
 namespace Selenium_CSharp_Practice.Pages.PW_Pages
@@ -15,7 +15,7 @@ namespace Selenium_CSharp_Practice.Pages.PW_Pages
         private static readonly By ToastErrorMessage = By.XPath("//span[@class='toast__message']");
 
 
-        public PWLoginPage(IWebDriver driver, WebDriverWait wait) : base(driver, wait) { }
+        public PWLoginPage(IWebDriver driver, WaitHelper waits) : base(driver, waits) { }
 
         public void EnterUsername(string username) => Type(UsernameInput, username);
         public void EnterPassword(string password) => Type(PasswordInput, password);
@@ -27,7 +27,7 @@ namespace Selenium_CSharp_Practice.Pages.PW_Pages
             EnterPassword(password);
             ClickOnLoginButton();
 
-            BooksPage _booksPage = new BooksPage(driver, wait);
+            BooksPage _booksPage = new BooksPage(driver, waits);
             return _booksPage;
 
         }

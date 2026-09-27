@@ -10,7 +10,7 @@ namespace Selenium_CSharp_Practice.Tests.PW_Books
         [SetUp]
         public void PwLoginSetup()
         {
-            _pwLoginPage = new PWLoginPage(driver, wait);
+            _pwLoginPage = new PWLoginPage(driver, waits);
         }
 
         [TestCase("kundalik.dev@gmail.com", "Admin@123", "Log in")]

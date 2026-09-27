@@ -10,7 +10,7 @@ namespace Selenium_CSharp_Practice.Tests
         [Test]
         public void LogoDisplay()
         {
-            LoginPage loginPage = new LoginPage(driver, wait);
+            LoginPage loginPage = new LoginPage(driver, waits);
             var isDis = loginPage.IsLogoDisplayed();
             Assert.That(isDis, Is.True);
         }
@@ -19,8 +19,8 @@ namespace Selenium_CSharp_Practice.Tests
         [TestCase("standard_user", "secret_sauce", "Products")]
         public void Login_With_ValidCrendentials(string username, string password, string expectedPageTitle)
         {
-            LoginPage loginPage = new LoginPage(driver, wait);
-            InventoryPage inventoryPage = new InventoryPage(driver, wait);
+            LoginPage loginPage = new LoginPage(driver, waits);
+            InventoryPage inventoryPage = new InventoryPage(driver, waits);
 
             loginPage.Login(username, password);
             string actualPageTitle = inventoryPage.GetPageTitle();
@@ -32,7 +32,7 @@ namespace Selenium_CSharp_Practice.Tests
         [TestCase("standard_user", "secret_sauce", "Products")]
         public void Login_With_ValidCrendentials_Should_NavigateTo_InventoryPage(string username, string password, string expectedPageTitle)
         {
-            LoginPage loginPage = new LoginPage(driver, wait);
+            LoginPage loginPage = new LoginPage(driver, waits);
 
             string actualPageTitle = loginPage.LoginAndNavigate(username, password).GetPageTitle();
             Assert.That(actualPageTitle, Is.EqualTo(expectedPageTitle));
@@ -44,7 +44,7 @@ namespace Selenium_CSharp_Practice.Tests
         [TestCase("standard_user", "", "Epic sadface: Password is required")]
         public void Login_With_InalidCredential_Should_Show_ErrorMessage(string username, string password, string expectedErrorMsg)
         {
-            LoginPage loginPage = new LoginPage(driver, wait);
+            LoginPage loginPage = new LoginPage(driver, waits);
 
             loginPage.Login(username, password);
 

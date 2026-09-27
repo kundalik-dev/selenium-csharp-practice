@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using Selenium_CSharp_Practice.Utils;
 using Selenium_CSharp_Practice.Base;
 using Selenium_CSharp_Practice.DataTypes;
 
@@ -21,7 +21,7 @@ namespace Selenium_CSharp_Practice.Pages
 
 
 
-        public InventoryPage(IWebDriver driver, WebDriverWait wait) : base(driver, wait)
+        public InventoryPage(IWebDriver driver, WaitHelper waits) : base(driver, waits)
         {
         }
 
@@ -51,7 +51,7 @@ namespace Selenium_CSharp_Practice.Pages
         // Select Product 
         public IWebElement SelectProductCard(string productName)
         {
-            return wait.Until(_ =>
+            return waits.Until(_ =>
         FindElements(ItemCards)
             .FirstOrDefault(card => card.FindElement(ItemNames).Text == productName));
 
@@ -61,7 +61,7 @@ namespace Selenium_CSharp_Practice.Pages
         public void AddProductToCart(string productName)
         {
             SelectProductCard(productName).FindElement(AddToCartButton).Click();
-            wait.Until(_ => AddToCartButtonText(productName) == "Remove");
+            waits.Until(_ => AddToCartButtonText(productName) == "Remove");
         }
 
         // Add To Cart Button Text

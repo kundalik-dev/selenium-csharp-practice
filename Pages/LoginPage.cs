@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using Selenium_CSharp_Practice.Utils;
 using Selenium_CSharp_Practice.Base;
 
 namespace Selenium_CSharp_Practice.Pages
@@ -13,7 +13,7 @@ namespace Selenium_CSharp_Practice.Pages
 
         private static readonly By ErrorMessageHeading = By.XPath("//h3");
 
-        public LoginPage(IWebDriver driver, WebDriverWait wait) : base(driver, wait)
+        public LoginPage(IWebDriver driver, WaitHelper waits) : base(driver, waits)
         {
         }
 
@@ -36,7 +36,7 @@ namespace Selenium_CSharp_Practice.Pages
             EnterPassword(password);
             ClickLogin();
 
-            var _inventoryPage = new InventoryPage(driver, wait);
+            var _inventoryPage = new InventoryPage(driver, waits);
             _inventoryPage.GetPageTitle();
             return _inventoryPage;
         }

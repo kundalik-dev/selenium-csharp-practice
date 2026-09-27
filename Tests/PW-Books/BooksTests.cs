@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium.Support.UI;
-using Selenium_CSharp_Practice.Base;
+﻿using Selenium_CSharp_Practice.Base;
 using Selenium_CSharp_Practice.Pages;
 using Selenium_CSharp_Practice.Pages.PW_Pages;
 
@@ -13,7 +12,7 @@ namespace Selenium_CSharp_Practice.Tests.PW_Books
         [SetUp]
         public void LoginSetup()
         {
-            _booksPage = new BooksPage(driver, wait);
+            _booksPage = new BooksPage(driver, waits);
         }
 
         [TestCase("Books")]

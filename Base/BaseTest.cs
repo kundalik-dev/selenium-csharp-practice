@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
+using Selenium_CSharp_Practice.Utils;
 using Selenium_CSharp_Practice.Config;
 
 namespace Selenium_CSharp_Practice.Base
@@ -11,7 +11,7 @@ namespace Selenium_CSharp_Practice.Base
     public abstract class BaseTest
     {
         protected IWebDriver driver { get; private set; } = null!;
-        protected WebDriverWait wait { get; private set; } = null!;
+        protected WaitHelper waits { get; private set; } = null!;
         protected AppConfig appSettings { get; private set; } = null!;
 
         [SetUp]
@@ -20,7 +20,8 @@ namespace Selenium_CSharp_Practice.Base
             appSettings = ConfigReader.Settings;
             driver = OpenBrowser(appSettings);
 
-            wait = new WebDriverWait(driver,
+            waits = new WaitHelper(
+                driver,
                 TimeSpan.FromSeconds(appSettings.ExplicitWaitSeconds));
 
             driver.Manage().Window.Maximize();

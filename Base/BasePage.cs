@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+//using SeleniumExtras.WaitHelpers;
 
 namespace Selenium_CSharp_Practice.Base
 {
@@ -21,8 +22,11 @@ namespace Selenium_CSharp_Practice.Base
         protected IWebElement FindElement(By locator) =>
              wait.Until(drv => drv.FindElement(locator));
 
-        // protected IWebElement WaitForElementPresent(By locator) =>
-        //     wait.Until(driver => driver.FindElement(locator));
+        //protected IWebElement WaitForElementVisible(By locator, int timeoutSeconds = 10)
+        //{
+        //    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutSeconds));
+        //    return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
+        //}
 
         // Find Elements
         protected IReadOnlyCollection<IWebElement> FindElements(By locator) =>

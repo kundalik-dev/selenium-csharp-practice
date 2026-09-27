@@ -3,7 +3,7 @@
   "BaseAPIUrl": "http://localhost:3000/api",
   "Browser": "chrome",
   "Options": ["--start-maximized", "--incognito"],
-  "Headless": false,
+  "Headless": true,
   "ImplicitWaitSeconds": 5,
   "ExplicitWaitSeconds": 10
 }

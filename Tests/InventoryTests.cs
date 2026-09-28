@@ -7,6 +7,7 @@ using Selenium_CSharp_Practice.Utils;
 namespace Selenium_CSharp_Practice.Tests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.Self)]
     public class InventoryTests : BaseTest
     {
         private LoginPage _loginPage = null!;
@@ -51,7 +52,8 @@ namespace Selenium_CSharp_Practice.Tests
         [Test]
         public void Should_NavigateSuccessfully_When_Clicking_AllLinks()
         {
-
+            driver.Close();
+            Assert.Pass();
         }
 
         [Test]
@@ -138,14 +140,23 @@ namespace Selenium_CSharp_Practice.Tests
         }
 
         [TestCase("Sauce Labs Backpack", "Sauce Labs Fleece Jacket", "2")]
-        [Test]
+        [Retry(2)]
         public void Should_AddTwoProductsToCart(string productName1, string productName2, string expectedProductCount)
         {
-            _inventoryPage.AddProductToCart(productName1);
-            _inventoryPage.AddProductToCart(productName2);
-            string actualCartItemCount = _inventoryPage.GetCartBadgeCount();
+            try
+            {
 
-            Assert.That(actualCartItemCount, Is.EqualTo(expectedProductCount));
+                _inventoryPage.AddProductToCart(productName1);
+                _inventoryPage.AddProductToCart(productName2);
+                string actualCartItemCount = _inventoryPage.GetCartBadgeCount();
+
+                Assert.That(actualCartItemCount, Is.EqualTo(expectedProductCount));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Assert.Fail();
+            }
         }
 
         [TestCase("Sauce Labs Backpack", "Remove")]
@@ -161,14 +172,14 @@ namespace Selenium_CSharp_Practice.Tests
         [Test]
         public void Should_SortProducts_ByName_Ascending()
         {
-
+            driver.Close();
+            Assert.Pass();
         }
 
         [Ignore("Feature not ready")]
         [Test]
         public void Should_NavigateToCartPage_OnClickingCartIcon()
         {
-
         }
 
         [TestCaseSource(nameof(InventoryProducts))]

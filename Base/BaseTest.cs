@@ -2,8 +2,8 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using Selenium_CSharp_Practice.Utils;
 using Selenium_CSharp_Practice.Config;
+using Selenium_CSharp_Practice.Utils;
 
 namespace Selenium_CSharp_Practice.Base
 {
@@ -32,8 +32,14 @@ namespace Selenium_CSharp_Practice.Base
         [TearDown]
         public void TearDown()
         {
-            driver.Dispose();
-            driver.Quit();
+            try
+            {
+                driver?.Quit();
+            }
+            finally
+            {
+                driver?.Dispose(); 
+            }
         }
 
 
@@ -54,7 +60,7 @@ namespace Selenium_CSharp_Practice.Base
 
         public static IWebDriver OpenChromeBrowser(AppConfig config)
         {
-            ChromeOptions options = new ChromeOptions();
+            ChromeOptions options = new ChromeOptions(); 
 
             if (config.Headless)
             {

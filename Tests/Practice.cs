@@ -3,6 +3,8 @@ using OpenQA.Selenium.Chrome;
 
 namespace Selenium_CSharp_Practice.Tests
 {
+    [TestFixture]
+    [Parallelizable(ParallelScope.Self)]
     public class StaticTableTests
     {
         public IWebDriver driver;

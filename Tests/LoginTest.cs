@@ -4,6 +4,7 @@ using Selenium_CSharp_Practice.Pages;
 namespace Selenium_CSharp_Practice.Tests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.Self)]
     public class LoginTest : BaseTest
     {
 
